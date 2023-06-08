@@ -30,7 +30,9 @@ if ($conn->connect_error) {
             </div>
     </header>
     <div>
-        
+        <div class="sidebar"></div>
+        <div class="sidebar_derecha"></div>
     </div>
+    
 </body>
 </html>
