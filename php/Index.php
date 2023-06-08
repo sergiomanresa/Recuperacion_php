@@ -23,7 +23,7 @@ if ($conn->connect_error) {
     <header>
             <div class="header-content">
                 <h1>Menu Gestion Pacientes</h1>
-                <p>Bienvenido  aqui podras gesionar a los Pacientes</p>
+                <p>Bienvenido aqui podras gesionar a los Pacientes</p>
             </div>
             <div>
                 <a href="Crear_Paciente.php">Crear Paciente</a>
