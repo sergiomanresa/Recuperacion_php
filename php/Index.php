@@ -26,7 +26,7 @@ if ($conn->connect_error) {
                 <p>Bienvenido  aqui podras gesionar a los Pacientes</p>
             </div>
             <div>
-                <a href="">Crear Paciente</a>
+                <a href="Crear_Paciente.php">Crear Paciente</a>
             </div>
     </header>
 </body>
