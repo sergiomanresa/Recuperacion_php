@@ -16,17 +16,14 @@ if ($conn->connect_error) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/Style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="..\css\style.css">
+    <title>Gestion Pacientes</title>
 </head>
 <body>
     <header>
-        <div>
             <h1>Menu Gestion Pacientes</h1>
-        </div>
-        <div>
-            <h3>Bienvenido administrador aqui podras gesionar a los Pacientes</h3>
-        </div>
+
+            <p>Bienvenido administrador aqui podras gesionar a los Pacientes</p>
     </header>
 </body>
 </html>
