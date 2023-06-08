@@ -8,7 +8,6 @@
         private $password = "";
 
         public function conectar_bd(){
-            
             try{
                 
                 $PDO = new PDO("mysql:host=".$this->host.";dbname=".$this->dbname, $this->user, $this->password);
