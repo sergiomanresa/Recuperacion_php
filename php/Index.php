@@ -21,9 +21,13 @@ if ($conn->connect_error) {
 </head>
 <body>
     <header>
-            <h1>Menu Gestion Pacientes</h1>
-
-            <p>Bienvenido administrador aqui podras gesionar a los Pacientes</p>
+            <div class="header-content">
+                <h1>Menu Gestion Pacientes</h1>
+                <p>Bienvenido  aqui podras gesionar a los Pacientes</p>
+            </div>
+            <div>
+                <a href="">Crear Paciente</a>
+            </div>
     </header>
 </body>
 </html>
