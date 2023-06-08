@@ -29,5 +29,8 @@ if ($conn->connect_error) {
                 <a href="Crear_Paciente.php">Crear Paciente</a>
             </div>
     </header>
+    <div>
+        
+    </div>
 </body>
 </html>
