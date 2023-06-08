@@ -31,6 +31,24 @@ if ($conn->connect_error) {
     </header>
     <div>
         <div class="sidebar"></div>
+        <form action="" method="POST">
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>sip</th>
+                    <th>dni</th>
+                    <th>nombre</th>
+                    <th>apellido 1</th>
+                    <th>apellido 2</th>
+                    <th>telefono</th>
+                    <th>sexo</th>
+                    <th>fecha_nacimiento</th>
+                    <th>localidad</th>
+                    <th>calle</th>
+                    <th>numero</th>
+                </tr>
+            </table>
+        </form>
         <div class="sidebar_derecha"></div>
     </div>
     
