@@ -1,9 +1,10 @@
 <?php
 // Incluir el archivo de configuración de la base de datos
-$config = require 'Config/Conexion_db.php';
+require_once '../config/Conexion_db.php';
+
 
 // Establecer la conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "hotel_php");
+$conn = new mysqli("localhost", "root", "", "hospital");
 
 // Verificar la conexión
 if ($conn->connect_error) {
@@ -19,6 +20,13 @@ if ($conn->connect_error) {
     <title>Document</title>
 </head>
 <body>
-    
+    <header>
+        <div>
+            <h1>Menu Gestion Pacientes</h1>
+        </div>
+        <div>
+            <h3>Bienvenido administrador aqui podras gesionar a los Pacientes</h3>
+        </div>
+    </header>
 </body>
 </html>
