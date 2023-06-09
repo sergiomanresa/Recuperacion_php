@@ -39,11 +39,12 @@ $stmt->execute();
                 <a href="Crear_Paciente.php">Crear Paciente</a>
             </div>
     </header>
-    <div>
-        <div class="sidebar"></div>
-        <form action="" method="POST">
-            <table>
-                <thead>
+    <div class="container">
+    <div class="sidebar"></div>
+    <form action="" method="POST">
+        <table>
+            <thead>
+                <tr>
                     <th>id</th>
                     <th>sip</th>
                     <th>dni</th>
@@ -56,7 +57,9 @@ $stmt->execute();
                     <th>localidad</th>
                     <th>calle</th>
                     <th>ED / EL</th>
-                </thead>
+                </tr>
+            </thead>
+            <tbody>
                 <?php
                 while($row = $stmt->fetch()){
                     echo "<tr>";
@@ -75,10 +78,11 @@ $stmt->execute();
                     echo "</tr>";
                 }
                 ?>
-            </table>
-        </form>
-        <div class="sidebar_derecha"></div>
-    </div>
+            </tbody>
+        </table>
+    </form>
+    <div class="sidebar_derecha"></div>
+</div>
     
 </body>
 </html>

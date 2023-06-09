@@ -1,21 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
-    
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 header {
   display: flex;
   flex-direction: row;
-  background: linear-gradient(to top,#009c97,#037773);
+  background: linear-gradient(to top, #009c97, #037773);
   color: #fff;
   padding: 20px 0;
   text-align: center;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .header-content {
@@ -26,6 +27,7 @@ header {
   justify-content: center;
   margin-left: 100px;
 }
+
 header div a {
   text-decoration: none;
   color: #fff;
@@ -35,53 +37,71 @@ header div a {
   border-radius: 5px;
   transition: background-color 0.3s;
   margin-right: 10px;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el texto que excede el ancho máximo */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos para el texto que excede el ancho máximo */
+}
+
+header div a.ed {
+  max-width: 30px; /* Ancho máximo para "ED" */
+}
+
+header div a.el {
+  max-width: 40px; /* Ancho máximo para "EL" */
 }
 
 header div a:hover {
   background-color: #037773;
 }
 
-.sidebar {
-  background: linear-gradient(to top,#05a19c,#009c97);
-  width: 152px;
-  height: calc(100vh - 60px); /* Ajustar la altura del sidebar */
-  padding: 20px;
+.container {
+  position: relative;
 }
-.sidebar_derecha{
+
+.sidebar {
+  background: linear-gradient(to top, #05a19c, #009c97);
+  width: 152px;
+  padding: 20px;
+  min-height: calc(100vh - 60px); /* Ajustar la altura mínima del sidebar */
+  box-sizing: border-box;
+}
+
+.sidebar_derecha {
   background: linear-gradient(to top, #05a19c, #009c97);
   width: 155px;
-  height: calc(100vh - 60px); /* Ajustar la altura del sidebar */
   padding: 20px;
-  position: absolute;
-  right: 0;
+  min-height: calc(100vh - 60px); /* Ajustar la altura mínima del sidebar */
+  box-sizing: border-box;
 }
-body div{
+
+body div {
   display: flex;
   flex-direction: row;
+  overflow-x: auto; /* Añadido para permitir el desplazamiento horizontal */
+  max-width: 100%; /* Añadido para asegurar que el contenido no exceda el ancho máximo */
 }
 
 table {
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   border-collapse: collapse;
+  table-layout: fixed; /* Añadido para que la tabla ocupe el ancho disponible */
 }
 
-th, td {
+th,
+td {
   padding: 6px;
   border: 1px solid #ddd;
   text-align: center;
-}
-
-th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
-
-td {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 30%;
+}
+
+th {
+  background-color: #05a19c;
+  color: #fff;
+  font-weight: bold;
 }
 
 form a {
@@ -89,11 +109,3 @@ form a {
   display: inline-block;
   transition: background-color 0.3s;
 }
-
-form a:hover {
-  background-color: #049a92;
-}
-
-
-
-
