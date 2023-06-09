@@ -85,6 +85,24 @@ $stmt->execute();
 </div>
 </body>
 <footer>
-    
+  <div class="footer-section">
+    <h3>Administrador</h3>
+    <p>Nombre: John Doe</p>
+    <p>Rol: Administrador</p>
+  </div>
+  <div class="footer-section">
+    <h3>Contacto</h3>
+    <p>Teléfono: xxx-xxx-xxxx</p>
+    <p>Correo electrónico: admin@example.com</p>
+  </div>
+  <div class="footer-right">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Pacientes</a></li>
+      <li><a href="#">Reportes</a></li>
+      <li><a href="#">Configuración</a></li>
+    </ul>
+  </div>
 </footer>
+
 </html>

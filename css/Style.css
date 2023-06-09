@@ -109,3 +109,51 @@ form a {
   display: inline-block;
   transition: background-color 0.3s;
 }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: linear-gradient(to right, #05a19c, #05a19c);
+  color: #fff;
+  padding: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px; /* Ajusta el margen derecho para juntar los elementos */
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  margin: 0;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.footer-right ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-right ul li {
+  margin-bottom: 10px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+
