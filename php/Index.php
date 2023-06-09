@@ -12,27 +12,40 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
 //query para rellenar la tabla de datos
-$sql = "Select * from pacientes limit 10";
-$stmt= $pdo->prepare($sql);
+$sql = "SELECT * FROM pacientes WHERE true";
+if (!empty($_POST["dni"])) {
+  $dni = $_POST["dni"];
+  $sql .= " AND dni LIKE :dni";
+}
+
+$sql .= " LIMIT 10";
+$stmt = $pdo->prepare($sql);
+
+if (!empty($_POST["dni"])) {
+  $dni = '%' . $dni . '%';
+  $stmt->bindParam(':dni', $dni);
+}
 
 $stmt->execute();
+
+$stmt->execute();
+} catch (PDOException $e) {
+    die("Error al conectar a la base de datos: " . $e->getMessage());
+}
 
 //verificar si a recibido el id en la url
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
 
-  // Query para eliminar pacientes
-  $sql = "DELETE FROM pacientes WHERE id = :id";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':id', $id);
+  //query para eliminar pacientes
+  $sql = "Delete * from pacientes where id= :id";
+  $stmt= $pdo->prepare($sql);
+  $stmt=bindParam(':id',$id);
   $stmt->execute();
 
-  // Redirigir a la página actualizada
-  header("Location: Index.php");
+  //devolver a la pagina actualizada
+  header("Location: Idex.php");
   exit();
-}
-} catch (PDOException $e) {
-  die("Error al conectar a la base de datos: " . $e->getMessage());
 }
 
 ?>
@@ -54,6 +67,13 @@ if (isset($_GET['id'])) {
                 <a href="Crear_Paciente.php">Crear Paciente</a>
             </div>
     </header>
+    <div>
+      <form action="Index.php" method="post">
+        <label for="dni">DNI:</label>
+        <input type="text" name="dni" placeholder="Ingresa el dni">
+        <input type="submit" value="enviar">
+      </form>
+    </div>
     <div class="container">
     <div class="sidebar"></div>
     <form action="" method="POST">
@@ -89,7 +109,7 @@ if (isset($_GET['id'])) {
                     echo "<td>".$row['fecha_nacimiento']."</td>";
                     echo "<td>".$row['localidad']."</td>";
                     echo "<td>".$row['calle']."</td>";
-                    echo '<td><a href="editar.php?id='.$row['id'].'">Editar</a> | <a href="Index.php?id='.$row['id'].'">Eliminar</a></td>';
+                    echo '<td><a href="editar.php?id='.$row['id'].'">Editar</a> | <a href="Eliminar.php?id='.$row['id'].'">Eliminar</a></td>';
                     echo "</tr>";
                 }
                 ?>
