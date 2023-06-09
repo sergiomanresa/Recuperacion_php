@@ -43,13 +43,13 @@ header div a:hover {
 
 .sidebar {
   background: linear-gradient(to top,#05a19c,#009c97);
-  width: 200px;
+  width: 152px;
   height: calc(100vh - 60px); /* Ajustar la altura del sidebar */
   padding: 20px;
 }
 .sidebar_derecha{
   background: linear-gradient(to top, #05a19c, #009c97);
-  width: 200px;
+  width: 155px;
   height: calc(100vh - 60px); /* Ajustar la altura del sidebar */
   padding: 20px;
   position: absolute;
@@ -61,7 +61,7 @@ body div{
 }
 
 table {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   border-collapse: collapse;
 }
@@ -81,5 +81,19 @@ td {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100px;
+  max-width: 30%;
 }
+
+form a {
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+form a:hover {
+  background-color: #049a92;
+}
+
+
+
+

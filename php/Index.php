@@ -55,6 +55,7 @@ $stmt->execute();
                     <th>fecha_nacimiento</th>
                     <th>localidad</th>
                     <th>calle</th>
+                    <th>ED / EL</th>
                 </thead>
                 <?php
                 while($row = $stmt->fetch()){
@@ -70,6 +71,7 @@ $stmt->execute();
                     echo "<td>".$row['fecha_nacimiento']."</td>";
                     echo "<td>".$row['localidad']."</td>";
                     echo "<td>".$row['calle']."</td>";
+                    echo '<td><a href="editar.php?id='.$row['id'].'">Editar</a> | <a href="eliminar.php?id='.$row['id'].'">Eliminar</a></td>';
                     echo "</tr>";
                 }
                 ?>
