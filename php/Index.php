@@ -74,8 +74,7 @@ try {
             <input type="text" name="dni" placeholder="Ingresa el dni">
             <input type="submit" value="enviar">
         </form>
-    </div>
-    <div class="limit-selector">
+        <div class="limit-selector">
         <form method="GET" action="">
             <label for="limit">Mostrar:</label>
             <select name="limit" id="limit">
@@ -86,6 +85,7 @@ try {
             </select>
             <input type="submit" value="Actualizar">
         </form>
+    </div>
     </div>
     <div class="container">
         <div class="sidebar"></div>
