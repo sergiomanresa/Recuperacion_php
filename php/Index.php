@@ -83,6 +83,8 @@ $stmt->execute();
     </form>
     <div class="sidebar_derecha"></div>
 </div>
-    
 </body>
+<footer>
+    
+</footer>
 </html>
