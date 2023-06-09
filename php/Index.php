@@ -37,14 +37,14 @@ $stmt->execute();
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
 
-  //query para eliminar pacientes
-  $sql = "Delete * from pacientes where id= :id";
-  $stmt= $pdo->prepare($sql);
-  $stmt=bindParam(':id',$id);
+  // Query para eliminar pacientes
+  $sql = "DELETE FROM pacientes WHERE id = :id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindParam(':id', $id);
   $stmt->execute();
 
-  //devolver a la pagina actualizada
-  header("Location: Idex.php");
+  // Redirigir a la página actualizada
+  header("Location: Index.php");
   exit();
 }
 
@@ -67,7 +67,7 @@ if (isset($_GET['id'])) {
                 <a href="Crear_Paciente.php">Crear Paciente</a>
             </div>
     </header>
-    <div>
+    <div class="buscador">
       <form action="Index.php" method="post">
         <label for="dni">DNI:</label>
         <input type="text" name="dni" placeholder="Ingresa el dni">
@@ -109,7 +109,7 @@ if (isset($_GET['id'])) {
                     echo "<td>".$row['fecha_nacimiento']."</td>";
                     echo "<td>".$row['localidad']."</td>";
                     echo "<td>".$row['calle']."</td>";
-                    echo '<td><a href="editar.php?id='.$row['id'].'">Editar</a> | <a href="Eliminar.php?id='.$row['id'].'">Eliminar</a></td>';
+                    echo '<td><a href="editar.php?id='.$row['id'].'">Editar</a> | <a href="Index.php?id='.$row['id'].'">Eliminar</a></td>';
                     echo "</tr>";
                 }
                 ?>
