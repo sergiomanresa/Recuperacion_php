@@ -16,8 +16,23 @@ $sql = "Select * from pacientes limit 10";
 $stmt= $pdo->prepare($sql);
 
 $stmt->execute();
+
+//verificar si a recibido el id en la url
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
+
+  // Query para eliminar pacientes
+  $sql = "DELETE FROM pacientes WHERE id = :id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindParam(':id', $id);
+  $stmt->execute();
+
+  // Redirigir a la página actualizada
+  header("Location: Index.php");
+  exit();
+}
 } catch (PDOException $e) {
-    die("Error al conectar a la base de datos: " . $e->getMessage());
+  die("Error al conectar a la base de datos: " . $e->getMessage());
 }
 
 ?>
@@ -74,7 +89,7 @@ $stmt->execute();
                     echo "<td>".$row['fecha_nacimiento']."</td>";
                     echo "<td>".$row['localidad']."</td>";
                     echo "<td>".$row['calle']."</td>";
-                    echo '<td><a href="editar.php?id='.$row['id'].'">Editar</a> | <a href="eliminar.php?id='.$row['id'].'">Eliminar</a></td>';
+                    echo '<td><a href="editar.php?id='.$row['id'].'">Editar</a> | <a href="Index.php?id='.$row['id'].'">Eliminar</a></td>';
                     echo "</tr>";
                 }
                 ?>
@@ -104,5 +119,4 @@ $stmt->execute();
     </ul>
   </div>
 </footer>
-
 </html>
