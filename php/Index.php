@@ -2,14 +2,24 @@
 // Incluir el archivo de configuración de la base de datos
 require_once '../config/Conexion_db.php';
 
+// Establecer la conexión a la base de datos utilizando PDO
+$dsn = "mysql:host=localhost;dbname=hospital";
+$username = "root";
+$password = "";
 
-// Establecer la conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "hospital");
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+//query para rellenar la tabla de datos
+$sql = "Select * from pacientes limit 10";
+$stmt= $pdo->prepare($sql);
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error al conectar a la base de datos: " . $conn->connect_error);
+$stmt->execute();
+} catch (PDOException $e) {
+    die("Error al conectar a la base de datos: " . $e->getMessage());
 }
+
 ?>
 <html lang="en">
 <head>
@@ -33,7 +43,7 @@ if ($conn->connect_error) {
         <div class="sidebar"></div>
         <form action="" method="POST">
             <table>
-                <tr>
+                <thead>
                     <th>id</th>
                     <th>sip</th>
                     <th>dni</th>
@@ -45,8 +55,24 @@ if ($conn->connect_error) {
                     <th>fecha_nacimiento</th>
                     <th>localidad</th>
                     <th>calle</th>
-                    <th>numero</th>
-                </tr>
+                </thead>
+                <?php
+                while($row = $stmt->fetch()){
+                    echo "<tr>";
+                    echo "<td>".$row['id']."</td>";
+                    echo "<td>".$row['sip']."</td>";
+                    echo "<td>".$row['dni']."</td>";
+                    echo "<td>".$row['nombre']."</td>";
+                    echo "<td>".$row['apellido1']."</td>";
+                    echo "<td>".$row['apellido2']."</td>";
+                    echo "<td>".$row['telefono']."</td>";
+                    echo "<td>".$row['sexo']."</td>";
+                    echo "<td>".$row['fecha_nacimiento']."</td>";
+                    echo "<td>".$row['localidad']."</td>";
+                    echo "<td>".$row['calle']."</td>";
+                    echo "</tr>";
+                }
+                ?>
             </table>
         </form>
         <div class="sidebar_derecha"></div>
