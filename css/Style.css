@@ -118,7 +118,6 @@ table {
   width: 100%;
   margin: 0;
   border-collapse: collapse;
-  table-layout: fixed; /* Añadido para que la tabla ocupe el ancho disponible */
 }
 
 th,
