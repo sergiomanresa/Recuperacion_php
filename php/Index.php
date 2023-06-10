@@ -162,7 +162,7 @@ try {
             </table>
             <div class="pagination">
                 <form method="POST" action="">
-                    <button name="retroceder" value="<?php echo $pagina > 1 ? $pagina - 1 : 1; ?>" <?php echo $pagina == 1 ? 'disabled' : ''; ?>>&lt;&lt;</button>
+                    <button name="retroceder" value="1" <?php echo $pagina == 1 ? 'disabled' : ''; ?>>&lt;&lt;</button>
                     <button name="retroceder" value="<?php echo $pagina > 1 ? $pagina - 1 : 1; ?>" <?php echo $pagina == 1 ? 'disabled' : ''; ?>>&lt;</button>
                     <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
                     <button name="avanzar" value="<?php echo $pagina < $totalPaginas ? $pagina + 1 : $totalPaginas; ?>" <?php echo $pagina == $totalPaginas ? 'disabled' : ''; ?>>&gt;</button>
