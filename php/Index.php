@@ -10,9 +10,41 @@ $password = "";
 try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+
     // Asignar el valor de $limit
     $limit = isset($_GET['limit']) ? $_GET['limit'] : 10;
+
+    // Calcular el total de registros y el número total de páginas
+    $registrosPagina = $limit;
+    $totalRegistros = $pdo->query("SELECT COUNT(*) FROM pacientes")->fetchColumn();
+    $totalPaginas = ceil($totalRegistros / $registrosPagina);
+
+    // Obtener el valor de la página actual
+    $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+    // Verificar si se hizo clic en el botón "Retroceder"
+    if (isset($_POST['retroceder'])) {
+        $pagina = intval($_POST['retroceder']);
+        if ($pagina < 1) {
+            $pagina = 1;
+        }
+    }
+
+    // Verificar si se hizo clic en el botón "Avanzar"
+    if (isset($_POST['avanzar'])) {
+        $pagina = intval($_POST['avanzar']);
+        if ($pagina > $totalPaginas) {
+            $pagina = $totalPaginas;
+        }
+    }
+
+    // Verificar si se hizo clic en el botón "Ir a la última página"
+    if (isset($_POST['ultima'])) {
+        $pagina = $totalPaginas;
+    }
+
+    // Calcular el desplazamiento para la consulta SQL
+    $offset = ($pagina - 1) * $limit;
 
     // Query para rellenar la tabla de datos
     $sql = "SELECT * FROM pacientes WHERE true";
@@ -21,7 +53,7 @@ try {
         $sql .= " AND dni LIKE :dni";
     }
 
-    $sql .= " LIMIT " . $limit;
+    $sql .= " LIMIT " . $limit . " OFFSET " . $offset;
     $stmt = $pdo->prepare($sql);
 
     if (!empty($_POST["dni"])) {
@@ -55,7 +87,7 @@ try {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="..\css\style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Gestion Pacientes</title>
 </head>
 <body>
@@ -75,17 +107,17 @@ try {
             <input type="submit" value="enviar">
         </form>
         <div class="limit-selector">
-        <form method="GET" action="">
-            <label for="limit">Mostrar:</label>
-            <select name="limit" id="limit">
-                <option value="2" <?php echo $limit == 2 ? 'selected' : ''; ?>>2</option>
-                <option value="4" <?php echo $limit == 4 ? 'selected' : ''; ?>>4</option>
-                <option value="8" <?php echo $limit == 8 ? 'selected' : ''; ?>>8</option>
-                <option value="10" <?php echo $limit == 10 ? 'selected' : ''; ?>>10</option>
-            </select>
-            <input type="submit" value="Actualizar">
-        </form>
-    </div>
+            <form method="GET" action="">
+                <label for="limit">Mostrar:</label>
+                <select name="limit" id="limit">
+                    <option value="2" <?php echo $limit == 2 ? 'selected' : ''; ?>>2</option>
+                    <option value="4" <?php echo $limit == 4 ? 'selected' : ''; ?>>4</option>
+                    <option value="8" <?php echo $limit == 8 ? 'selected' : ''; ?>>8</option>
+                    <option value="10" <?php echo $limit == 10 ? 'selected' : ''; ?>>10</option>
+                </select>
+                <input type="submit" value="Actualizar">
+            </form>
+        </div>
     </div>
     <div class="container">
         <div class="sidebar"></div>
@@ -128,10 +160,17 @@ try {
                     ?>
                 </tbody>
             </table>
+            <div class="pagination">
+                <form method="POST" action="">
+                    <button name="retroceder" value="<?php echo $pagina > 1 ? $pagina - 1 : 1; ?>" <?php echo $pagina == 1 ? 'disabled' : ''; ?>>&lt;&lt;</button>
+                    <button name="retroceder" value="<?php echo $pagina > 1 ? $pagina - 1 : 1; ?>" <?php echo $pagina == 1 ? 'disabled' : ''; ?>>&lt;</button>
+                    <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
+                    <button name="avanzar" value="<?php echo $pagina < $totalPaginas ? $pagina + 1 : $totalPaginas; ?>" <?php echo $pagina == $totalPaginas ? 'disabled' : ''; ?>>&gt;</button>
+                    <button name="avanzar" value="<?php echo $totalPaginas; ?>" <?php echo $pagina == $totalPaginas ? 'disabled' : ''; ?>>&gt;&gt;</button>
+                </form>
+            </div>
         </form>
-        <div class="sidebar_derecha"></div>
     </div>
-    </body>
     <footer>
         <div class="footer-section">
             <h3>Administrador</h3>
@@ -152,4 +191,5 @@ try {
             </ul>
         </div>
     </footer>
+</body>
 </html>
