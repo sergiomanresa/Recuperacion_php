@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #037773;
+    background: linear-gradient(to top, #009c97, #037773);
   color: #fff;
 }
 
@@ -50,7 +50,7 @@ h1 {
 header {
   display: flex;
   flex-direction: row;
-  background: linear-gradient(to top, #009c97, #037773);
+  background: linear-gradient(to top, #037773, #037773);
   color: #fff;
   padding: 20px 0;
   text-align: center;
