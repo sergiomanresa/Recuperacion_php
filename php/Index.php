@@ -155,7 +155,7 @@ try {
                         echo "<td>".$row['fecha_nacimiento']."</td>";
                         echo "<td>".$row['localidad']."</td>";
                         echo "<td>".$row['calle']."</td>";
-                        echo '<td><a href="editar.php?id='.$row['id'].'">Editar</a> | <a href="Index.php?id='.$row['id'].'">Eliminar</a></td>';
+                        echo '<td><a href="Editar_paciente.php?id='.$row['id'].'">Editar</a> | <a href="Index.php?id='.$row['id'].'">Eliminar</a></td>';
                         echo "</tr>";
                     }
                     ?>
