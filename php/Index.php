@@ -47,18 +47,22 @@ try {
     $offset = ($pagina - 1) * $limit;
 
     // Query para rellenar la tabla de datos
-    $sql = "SELECT * FROM pacientes WHERE true";
-    if (!empty($_POST["dni"])) {
-        $dni = $_POST["dni"];
+    $sql = "SELECT * FROM pacientes WHERE 1=1";
+    $params = array();
+
+    if (!empty($_GET["dni"])) {
+        $dni = $_GET["dni"];
         $sql .= " AND dni LIKE :dni";
+        $params[':dni'] = '%' . $dni . '%';
     }
 
-    $sql .= " LIMIT " . $limit . " OFFSET " . $offset;
+    $sql .= " LIMIT :limit OFFSET :offset";
     $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 
-    if (!empty($_POST["dni"])) {
-        $dni = '%' . $dni . '%';
-        $stmt->bindParam(':dni', $dni);
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value);
     }
 
     $stmt->execute();
@@ -82,6 +86,7 @@ try {
 }
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -101,7 +106,7 @@ try {
         </div>
     </header>
     <div class="buscador">
-        <form action="Index.php" method="post">
+        <form action="Index.php" method="get">
             <label for="dni">DNI:</label>
             <input type="text" name="dni" placeholder="Ingresa el dni">
             <input type="submit" value="enviar">
@@ -195,3 +200,4 @@ try {
     </footer>
 </body>
 </html>
+
