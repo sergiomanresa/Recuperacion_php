@@ -115,6 +115,7 @@ try {
                     <option value="8" <?php echo $limit == 8 ? 'selected' : ''; ?>>8</option>
                     <option value="10" <?php echo $limit == 10 ? 'selected' : ''; ?>>10</option>
                 </select>
+                <input type="hidden" name="pagina" value="<?php echo $pagina; ?>">
                 <input type="submit" value="Actualizar">
             </form>
         </div>
@@ -167,6 +168,7 @@ try {
                     <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
                     <button name="avanzar" value="<?php echo $pagina < $totalPaginas ? $pagina + 1 : $totalPaginas; ?>" <?php echo $pagina == $totalPaginas ? 'disabled' : ''; ?>>&gt;</button>
                     <button name="avanzar" value="<?php echo $totalPaginas; ?>" <?php echo $pagina == $totalPaginas ? 'disabled' : ''; ?>>&gt;&gt;</button>
+                    <input type="hidden" name="pagina" value="<?php echo $pagina; ?>">
                 </form>
             </div>
         </form>
