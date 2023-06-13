@@ -47,7 +47,7 @@ try {
     $offset = ($pagina - 1) * $limit;
 
     // Query para rellenar la tabla de datos
-    $sql = "SELECT * FROM pacientes WHERE 1=1";
+    $sql = "SELECT * FROM pacientes WHERE true";
     $params = array();
 
     if (!empty($_GET["dni"])) {
@@ -67,20 +67,7 @@ try {
 
     $stmt->execute();
 
-    // Verificar si se recibió el id en la URL
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-
-        // Query para eliminar pacientes
-        $sql = "DELETE FROM pacientes WHERE id = :id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-
-        // Redirigir a la página actualizada
-        header("Location: Index.php");
-        exit();
-    }
+   
 } catch (PDOException $e) {
     die("Error al conectar a la base de datos: " . $e->getMessage());
 }
@@ -98,7 +85,7 @@ try {
 <body>
     <header>
         <div class="header-content">
-            <h1>Menu Gestion Pacientes</h1>
+            <h1>Menú Gestión Pacientes</h1>
             <p>Bienvenido, aquí podrás gestionar a los Pacientes</p>
         </div>
         <div>
@@ -160,14 +147,14 @@ try {
                         echo "<td>".$row['fecha_nacimiento']."</td>";
                         echo "<td>".$row['localidad']."</td>";
                         echo "<td>".$row['calle']."</td>";
-                        echo '<td><a href="Editar_paciente.php?id='.$row['id'].'">Editar</a> | <a href="Index.php?id='.$row['id'].'">Eliminar</a></td>';
+                        echo '<td><a href="Editar_paciente.php?id='.$row['id'].'">Editar</a> | <a href="eliminar_Paciente?id='.$row['id'].'">Eliminar</a></td>';
                         echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
             <div class="pagination">
-                <form method="POST" action="">
+                <form method="POST" action="" class="formulario">
                     <button name="retroceder" value="1" <?php echo $pagina == 1 ? 'disabled' : ''; ?>>&lt;&lt;</button>
                     <button name="retroceder" value="<?php echo $pagina > 1 ? $pagina - 1 : 1; ?>" <?php echo $pagina == 1 ? 'disabled' : ''; ?>>&lt;</button>
                     <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>

@@ -55,6 +55,7 @@ header div a:hover {
 }
 
 .buscador {
+  padding-bottom: 10px;
   background: linear-gradient(to top, #05a19c, #009c97);
   display: flex;
   justify-content: center;
@@ -188,4 +189,22 @@ footer {
 footer a {
   text-decoration: none;
   color: #fff;
+}
+.pagination {
+  margin: auto;
+  padding-top: 5px;
+  width: 100%;
+
+
+}
+.pagination button {
+  display: inline-block;
+  margin: 2px;
+  border: #009c97 solid 2px;
+  width: 30px;
+  height: 30px;
+}
+.pagination button:first-child{
+  margin-left: 15px;
+
 }

@@ -36,7 +36,7 @@ try {
             $calle = $_POST["calle"];
 
             // Actualizar los datos del paciente en la base de datos
-            $sql_update = "UPDATE pacientes SET sip = :sip, dni = :dni, nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono, sexo = :sexo, fecha_nacimiento = :fecha_nacimiento, localidad = :localidad, calle = :calle WHERE id = :id";
+            $sql_update ="UPDATE pacientes SET sip = :sip, dni = :dni, nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono, sexo = :sexo, fecha_nacimiento = :fecha_nacimiento, localidad = :localidad, calle = :calle WHERE id = :id";
             $statement_update = $pdo->prepare($sql_update);
             $statement_update->bindParam(':sip', $sip);
             $statement_update->bindParam(':dni', $dni);
@@ -92,12 +92,12 @@ try {
             <label for="apellido2">Apellido 2:</label>
             <input type="text" name="apellido2" value="<?php echo $paciente['apellido2']; ?>"><br>
             <label for="telefono">Teléfono:</label>
-            <input type="number" name="telefono" value="<?php echo $paciente['telefono']; ?>" required><br>
+            <input type="telf" name="telefono" value="<?php echo $paciente['telefono']; ?>" required><br>
             <label for="sexo">Sexo:</label>
             <select name="sexo" required>
                 <option value="Hombre" <?php if ($paciente['sexo'] === 'Hombre') echo 'selected'; ?>>Hombre</option>
                 <option value="Mujer" <?php if ($paciente['sexo'] === 'Mujer') echo 'selected'; ?>>Mujer</option>
-            </select><br>
+            </select>
             <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
             <input type="date" name="fecha_nacimiento" value="<?php echo $paciente['fecha_nacimiento']; ?>" required><br>
             <label for="localidad">Localidad:</label>
