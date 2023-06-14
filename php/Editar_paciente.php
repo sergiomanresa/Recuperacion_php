@@ -52,7 +52,7 @@ try {
             $statement_update->execute();
 
             // Redirigir al usuario a la página de visualización de pacientes después de la actualización
-            header("Location: Index.php?id=" . $id);
+            header("Location: Index.php");
             exit();
         }
     }
