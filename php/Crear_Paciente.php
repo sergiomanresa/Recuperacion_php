@@ -17,7 +17,7 @@ try {
     $ultimo_id = $fila_ultimo_id['ultimo'];
     $nuevo_id = $ultimo_id + 1;
 
-    if (isset($_POST['crear_cliente'])) {
+    if (isset($_POST['crear_Paciente'])) {
         // Obtener los datos del formulario
         $sip = $_POST["sip"];
         $dni = $_POST["dni"];
@@ -31,7 +31,7 @@ try {
         $calle = $_POST["calle"];
 
         // Preparar la consulta SQL
-        $sql_ = "INSERT INTO pacientes (sip,dni,nombre, apellido1, apellido2, telefono, sexo, fecha_nacimiento, localidad, calle) VALUES (:dni,:sip,:nombre, :apellido1, :apellido2, :telefono, :sexo, :fecha_nacimiento, :localidad, :calle)";
+        $sql_ = "INSERT INTO pacientes (sip,dni,nombre, apellido1, apellido2, telefono, sexo, fecha_nacimiento, localidad, calle) VALUES (:sip,:dni,:nombre, :apellido1, :apellido2, :telefono, :sexo, :fecha_nacimiento, :localidad, :calle)";
         $resultado_insert = $pdo->prepare($sql_);
 
         // Asignar los valores a los parámetros de la consulta
@@ -92,7 +92,7 @@ try {
             <label for="apellido2">Apellido 2:</label>
             <input type="text" name="apellido2"><br>
             <label for="telefono">Teléfono:</label>
-            <input type="number" name="telefono" pattern="[0-9]+" required><br>
+            <input type="tels" name="telefono"required><br>
             <label for="sexo">Sexo:</label>
             <select name="sexo" required>
                 <option value="Hombre">Hombre</option>
@@ -104,7 +104,7 @@ try {
             <input type="text" name="localidad" required><br>
             <label for="calle">Calle:</label>
             <input type="text" name="calle" required><br>
-            <input type="submit" name="crear_cliente" value="Crear Paciente">
+            <input type="submit" name="crear_Paciente" value="crear_Paciente">
         </form>
     </div>
 </body>

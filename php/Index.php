@@ -93,7 +93,7 @@ try {
         </div>
     </header>
     <div class="buscador">
-        <form action="Index.php" method="get">
+        <form action="Index.php" method="GET">
             <label for="dni">DNI:</label>
             <input type="text" name="dni" placeholder="Ingresa el dni">
             <input type="submit" value="enviar">
@@ -147,7 +147,7 @@ try {
                         echo "<td>".$row['fecha_nacimiento']."</td>";
                         echo "<td>".$row['localidad']."</td>";
                         echo "<td>".$row['calle']."</td>";
-                        echo '<td><a href="Editar_paciente.php?id='.$row['id'].'">Editar</a> | <a href="eliminar_Paciente?id='.$row['id'].'">Eliminar</a></td>';
+                        echo '<td><a href="Editar_paciente.php?id='.$row['id'].'">Editar</a> | <a href="eliminar_Paciente.php?id='.$row['id'].'">Eliminar</a></td>';
                         echo "</tr>";
                     }
                     ?>
