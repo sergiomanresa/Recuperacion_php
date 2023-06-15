@@ -11,11 +11,7 @@ try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT MAX(id) as ultimo FROM pacientes";
-    $resultado = $pdo->query($sql);
-    $fila_ultimo_id = $resultado->fetch(PDO::FETCH_ASSOC);
-    $ultimo_id = $fila_ultimo_id['ultimo'];
-    $nuevo_id = $ultimo_id + 1;
+
 
     if (isset($_POST['crear_Paciente'])) {
         // Obtener los datos del formulario
@@ -49,11 +45,10 @@ try {
         $resultado_insert->execute();
 
         if ($resultado_insert) {
-            // La reserva se creó correctamente, redirigir al usuario a admin_reservas.php
             header("Location: Index.php");
             exit();
         } else {
-            // Ocurrió un error al crear la reserva, puedes mostrar un mensaje de error o realizar alguna otra acción
+         
             echo "Error al crear el paciente: " . $resultado_insert->errorInfo()[2];
         }
     }
@@ -62,7 +57,6 @@ try {
     exit();
 }
 ?>
-
 <html lang="en">
 
 <head>
